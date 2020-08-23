@@ -27,7 +27,7 @@ let compileCSSForProd = () => {
             outputStyle: `compressed`,
             precision: 10
         }).on(`error`, CSSCompiler.logError))
-        .pipe(dest(`css`));
+        .pipe(dest(`./production-website/css`));
 };
 
 let compileHTMLForDev = () => {
@@ -66,7 +66,7 @@ let compileHTMLForProd = () => {
             removeComments: true,
             collapseWhitespace: true
         }))
-        .pipe(dest(`./`));
+        .pipe(dest(`./production-website`));
 };
 
 let serve = () => {
@@ -90,7 +90,7 @@ let serve = () => {
 async function clean () {
     let fs = require(`fs`),
         i,
-        foldersToDelete = [`.temp/`];
+        foldersToDelete = [`./.temp/`, `./production-website/`];
 
     for (i = 0; i < foldersToDelete.length; i++) {
         try {
