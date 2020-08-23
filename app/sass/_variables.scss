@@ -1,0 +1,25 @@
+//// ===============================================================================
+/// Typeface-related
+//// ===============================================================================
+$font-stack--reading-text: 'IBM Plex Sans', sans-serif;
+$font-stack--headings:     'Poppins', sans-serif;
+$base-typeface-size:        16px;
+$leading:                   1.2;
+
+//// ===============================================================================
+/// Grid-based Variables
+//// ===============================================================================
+$grid--column-width: 60px;
+$grid--gutter-width: 20px;
+$grid--unit:        ($grid--column-width + $grid--gutter-width);
+$grid--leading:     ($base-typeface-size * $leading);
+
+//// ===============================================================================
+/// Content Widths
+//// ===============================================================================
+$page-width--desktop: (12 * $grid--unit);                      // 960px
+$page-width--tablet:  (9 * $grid--unit);                       // 720px
+
+$viewport-width--desktop: ($page-width--desktop + (2 * 32px)); // 1024px
+$viewport-width--tablet:  ($page-width--tablet + (2 * 40px));  // 800px
+$viewport-width--phone:   (4 * $grid--unit);                   // 320px

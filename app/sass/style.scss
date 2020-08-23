@@ -1,0 +1,111 @@
+@import 'links';
+@import 'mixins';
+@import 'variables';
+@import 'nav';
+
+/// This is slow. Use a reset.css document, instead.
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+:root {
+  @include preserve-css-variable(--primary-color, #000);
+  @include preserve-css-variable(--secondary-color, #777);
+  @include preserve-css-variable(--tertiary-color, #fff);
+}
+
+body {
+  border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
+  font-family: $font-stack--reading-text;
+  margin: auto;
+  padding: 0 10px;
+
+  /// Remove in production.
+  &::before {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    background-color: yellow;
+  }
+
+  @media (min-width: $viewport-width--desktop + 1) {
+    &::before {
+      content: 'Desktop';
+    }
+
+    /// Remove 22 in production. It’s being used to make up for the border.
+    width: ($page-width--desktop - 2);
+  }
+
+  @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
+    &::before {
+      content: 'Laptop';
+    }
+    /// Remove 2 in production. It’s being used to make up for the border.
+    width: ($page-width--tablet - 2);
+  }
+
+  @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
+    &::before {
+      content: 'Tablet';
+    }
+    /// Remove 2 in production. It’s being used to make up for the border.
+    width: 90%;
+  }
+
+  @media (max-width: $viewport-width--phone) {
+    &::before {
+      content: 'Phone';
+    }
+
+    width: auto;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-stack--headings;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+sub,
+sup {
+  ////
+  /// Where the magic happens: makes all browsers position the sup/sup properly,
+  /// relative to the surrounding text
+  ////
+  position: relative;
+
+  ////
+  /// Note that if you're using Eric Meyer's reset.css, this is already set and
+  /// you can remove this rule
+  /// surrounding text
+  ////
+  font-size: 75%;
+}
+
+sub {
+  ////
+  /// Move the subscripted text down, but only half as far down as the superscript
+  /// moved up
+  ////
+  bottom: -.25em;
+}
+
+sup {
+  ////
+  /// Move the superscripted text up
+  ////
+  top: -.5em;
+}

@@ -1,0 +1,9 @@
+@import 'variables';
+
+a {
+  color: var(--secondary-color);
+
+  &:link {
+    text-decoration: none;
+  }
+}
