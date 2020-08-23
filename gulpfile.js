@@ -53,9 +53,6 @@ let compileHTMLForProd = () => {
         `./app/views/*.html`,
         `./app/views/**/*.html`])
         .pipe(data(function () {
-            return require(`./app/models/data.json`);
-        }))
-        .pipe(data(function () {
             return require(`./app/models/links.json`);
         }))
         .pipe(data(function () {
