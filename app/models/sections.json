@@ -1,0 +1,37 @@
+{
+  "sections": [
+    {
+      "id": "description",
+      "class": "",
+      "title": "",
+      "content": [
+        "",
+        {
+          "blockquote": ""
+        },
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "contact",
+      "class": "",
+      "title": "",
+      "content": [
+        ""
+      ]
+    },
+    {
+      "id": "resources",
+      "class": "fa fa-question",
+      "title": "Resources",
+      "content": [
+        "Below is a short list of resources."
+      ],
+      "list": [
+        "The official <a href=\"https://www.arduino.cc/\" target=\"_blank\" rel=\"noopener\">Arduino page</a>."
+      ]
+    }
+  ]
+}
