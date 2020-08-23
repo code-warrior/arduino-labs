@@ -16,7 +16,7 @@ let compileCSSForDev = () => {
             outputStyle: `expanded`,
             precision: 10
         }).on(`error`, CSSCompiler.logError))
-        .pipe(dest(`.temp/css`));
+        .pipe(dest(`./.temp/css`));
 };
 
 let compileCSSForProd = () => {
@@ -43,7 +43,7 @@ let compileHTMLForDev = () => {
             return JSON.parse(fs.readFileSync(`./app/models/sections.json`));
         }))
         .pipe(HTMLPreprocessor())
-        .pipe(dest(`.temp`));
+        .pipe(dest(`./.temp`));
 };
 
 let compileHTMLForProd = () => {
@@ -73,16 +73,16 @@ let serve = () => {
     browserSync({
         notify: true,
         server: {
-            baseDir: [`.temp/`, `app/`]
+            baseDir: [`./.temp/`, `./app/`]
         }
     });
 
     watch([
-        `app/views/*.html`,
-        `app/controllers/**/*.njk`,
-        `app/controllers/*.njk`,
-        `app/sass/*.scss`,
-        `app/models/*.json`
+        `./app/views/*.html`,
+        `./app/controllers/**/*.njk`,
+        `./app/controllers/*.njk`,
+        `./app/sass/*.scss`,
+        `./app/models/*.json`
     ], series(`compileHTMLForDev`, `compileCSSForDev`))
     .on(`change`, reload);
 };
