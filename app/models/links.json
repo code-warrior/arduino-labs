@@ -1,0 +1,68 @@
+{
+  "links": [
+    {
+      "nav": [
+        {
+          "name": "pre lab info",
+          "anchor": ""
+        },
+        {
+          "name": "component descriptions",
+          "anchor": ""
+        },
+        {
+          "name": "lab 1",
+          "anchor": "lab-1"
+        },
+        {
+          "name": "lab 2",
+          "anchor": "lab-2"
+        },
+        {
+          "name": "lab 3",
+          "anchor": "lab-3"
+        },
+        {
+          "name": "lab 4",
+          "anchor": "lab-4"
+        },
+        {
+          "name": "lab 5",
+          "anchor": "lab-5"
+        },
+        {
+          "name": "lab 6",
+          "anchor": "lab-6"
+        }
+      ],
+      "footer": [
+        {
+          "name": "GitHub",
+          "anchor": "https://github.com/code-warrior/arduino-labs"
+        },
+        {
+          "name": "Nunjucks",
+          "anchor": "https://mozilla.github.io/nunjucks/"
+        },
+        {
+          "name": "Gulp",
+          "anchor": "https://gulpjs.com/"
+        },
+        {
+          "name": "<abbr title='Syntactically Awesome Style Sheets'>Sass</abbr>",
+          "anchor": "https://sass-lang.com/"
+        },
+        {
+          "name": "Axe",
+          "anchor": "https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US"
+        }
+      ],
+      "resource_list": [
+        {
+          "name": "",
+          "anchor": ""
+        }
+      ]
+    }
+  ]
+}
