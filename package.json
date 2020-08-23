@@ -1,5 +1,5 @@
 {
-  "name": "arduino-labs",
+  "name": "arduino-labs-website",
   "version": "1.0.0",
   "description": "The website for the Arduino labs used across all sections of CS 110 at The University of Hartford.",
   "main": "gulpfile.js",
