@@ -23,3 +23,12 @@ $page-width--tablet:  (9 * $grid--unit);                       // 720px
 $viewport-width--desktop: ($page-width--desktop + (2 * 32px)); // 1024px
 $viewport-width--tablet:  ($page-width--tablet + (2 * 40px));  // 800px
 $viewport-width--phone:   (4 * $grid--unit);                   // 320px
+
+$width-nav-item: (2 * $grid--unit);
+$height-nav-item: 48px;
+$height-inner-li: $height-nav-item;
+
+$color--bg--main:  #21bde1;
+$color--bg--nav:   $color--bg--main;
+$color--text:      #555;
+$color--nav-links: #000;

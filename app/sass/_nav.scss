@@ -1,1 +1,35 @@
 @import 'variables';
+
+nav {
+  background-color: $color--bg--main;
+  height: $height-nav-item;
+  margin: auto;
+  text-transform: capitalize;
+
+  > ul {
+    display: flex;
+    list-style-type: none;
+
+    > li {
+      flex-basis: $width-nav-item;
+
+      @media (max-width: (6 * $grid--unit)) {
+        font-size: (.875 * $base-typeface-size);
+      }
+    }
+  }
+
+  a {
+    display: block;
+    color: $color--nav-links;
+    line-height: $height-nav-item;
+    text: {
+      decoration: none;
+      align: center;
+    }
+
+    &:hover {
+      background-color: lighten($color--bg--main, 40%);
+    }
+  }
+}
