@@ -29,16 +29,22 @@
   //
   // links is a JSON object that references links.json (in the folder app/models)
   //    that contains all the names, anchors, and classes used in this navigation.
+  //
+  // Because the first two items in the links JSON file aren’t used in the nav, we
+  //    skip over them.
+  //
   // --------------------------------------------------------------------------------
 #}
 {% macro nav(currentPage, links) -%}
 <nav>
   <ul>
-  {% for link in links %}
-    {% for item in link.nav %}
-    <li{% if currentPage == item.name %} class="current"{% endif -%}><a href="{{ item.anchor }}"><span class="{{ item.class }}"></span><br>{{ item.name }}</a></li>
-    {% endfor %}
-  {% endfor %}
+  {%- for link in links -%}
+    {%- for item in link.nav -%}
+      {%- if loop.index > 2 -%}
+        <li{%- if currentPage == item.name -%} class="current"{% endif %}><a href="{{ item.anchor }}">{{ item.name }}</a></li>
+      {%- endif %}
+    {% endfor -%}
+  {%- endfor %}
   </ul>
 </nav>
 {%- endmacro %}
