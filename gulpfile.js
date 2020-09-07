@@ -71,7 +71,7 @@ let serve = () => {
         reloadDelay: 50,
         notify: true,
         server: {
-            baseDir: [`./.temp/`, `./app/`]
+            baseDir: [`./.temp/`, `./app/`, `./app/views/`]
         }
     });
 
