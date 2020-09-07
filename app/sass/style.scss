@@ -20,35 +20,18 @@ body {
   margin: auto;
   padding: 0 10px;
 
-  /// Remove in production.
-  &::before {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    padding: 20px;
-    background-color: yellow;
-  }
 
   @media (min-width: $viewport-width--desktop + 1) {
-    &::before {
-      content: 'Desktop';
-    }
     /// Remove 22 in production. It’s being used to make up for the border.
     width: ($page-width--desktop - 2);
   }
 
   @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
-    &::before {
-      content: 'Laptop';
-    }
     /// Remove 2 in production. It’s being used to make up for the border.
     width: ($page-width--tablet - 2);
   }
 
   @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
-    &::before {
-      content: 'Tablet';
-    }
     /// Remove 2 in production. It’s being used to make up for the border.
     width: 90%;
   }
