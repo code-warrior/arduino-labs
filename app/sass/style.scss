@@ -1,14 +1,8 @@
+@import 'reset';
 @import 'links';
 @import 'mixins';
 @import 'variables';
 @import 'nav';
-
-/// This is slow. Use a reset.css document, instead.
-* {
-  margin: 0;
-  border: 0;
-  padding: 0;
-}
 
 :root {
   @include preserve-css-variable(--primary-color, #000);
