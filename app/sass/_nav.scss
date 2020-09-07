@@ -30,6 +30,7 @@ nav {
 
     &:hover {
       background-color: lighten($color--bg--main, 40%);
+      color: $color--header-text;
     }
   }
 }
