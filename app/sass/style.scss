@@ -22,17 +22,14 @@ body {
 
 
   @media (min-width: $viewport-width--desktop + 1) {
-    /// Remove 22 in production. It’s being used to make up for the border.
     width: ($page-width--desktop - 2);
   }
 
   @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
-    /// Remove 2 in production. It’s being used to make up for the border.
     width: ($page-width--tablet - 2);
   }
 
   @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
-    /// Remove 2 in production. It’s being used to make up for the border.
     width: 90%;
   }
 
