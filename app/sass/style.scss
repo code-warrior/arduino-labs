@@ -22,11 +22,9 @@ body {
 
 
   @media (min-width: $viewport-width--desktop + 1) {
-    width: ($page-width--desktop - 2);
   }
 
   @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
-    width: ($page-width--tablet - 2);
   }
 
   @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
