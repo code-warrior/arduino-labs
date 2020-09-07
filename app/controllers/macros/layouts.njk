@@ -37,14 +37,16 @@
 #}
 {% macro nav(currentPage, links) -%}
 <nav>
-  <ul>
-  {%- for link in links -%}
-    {%- for item in link.nav -%}
-      {%- if loop.index > 2 -%}
-        <li{%- if currentPage == item.name -%} class="current"{% endif %}><a href="{{ item.anchor }}">{{ item.name }}</a></li>
-      {%- endif %}
-    {% endfor -%}
-  {%- endfor %}
-  </ul>
+  <div class="container">
+    <ul>
+    {%- for link in links -%}
+      {%- for item in link.nav -%}
+        {%- if loop.index > 2 -%}
+          <li{%- if currentPage == item.name -%} class="current"{% endif %}><a href="{{ item.anchor }}">{{ item.name }}</a></li>
+        {%- endif %}
+      {% endfor -%}
+    {%- endfor %}
+    </ul>
+  </div>
 </nav>
 {%- endmacro %}
