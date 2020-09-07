@@ -10,6 +10,8 @@
   @include preserve-css-variable(--primary-color, #000);
   @include preserve-css-variable(--secondary-color, #777);
   @include preserve-css-variable(--tertiary-color, #fff);
+
+  font-size: $base-typeface-size;
 }
 
 body {
