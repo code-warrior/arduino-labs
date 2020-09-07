@@ -2,6 +2,7 @@
 @import 'links';
 @import 'mixins';
 @import 'variables';
+@import 'headings';
 @import 'header';
 @import 'nav';
 
@@ -101,15 +102,6 @@ footer {
       }
     }
   }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $font-stack--headings;
 }
 
 abbr {

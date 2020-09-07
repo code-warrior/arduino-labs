@@ -1,0 +1,25 @@
+@import 'variables';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-stack--headings;
+}
+
+h1 {
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 14px 0;
+}
