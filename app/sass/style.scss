@@ -18,6 +18,8 @@ body {
   color: var(--primary-color);
   font-family: $font-stack--reading-text;
   margin: auto;
+  line-height: $leading;
+}
 
 
   @media (min-width: $viewport-width--desktop + 1) {
