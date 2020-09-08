@@ -21,11 +21,15 @@ body {
   line-height: $leading;
 }
 
+.container {
+  margin: auto;
 
   @media (min-width: $viewport-width--desktop + 1) {
+    width: ($page-width--desktop);
   }
 
   @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
+    width: ($page-width--tablet);
   }
 
   @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
