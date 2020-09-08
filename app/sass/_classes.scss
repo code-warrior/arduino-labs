@@ -1,0 +1,33 @@
+@import 'variables';
+
+.container {
+  margin: auto;
+
+  @media (min-width: $viewport-width--desktop + 1) {
+    width: ($page-width--desktop);
+  }
+
+  @media (min-width: $viewport-width--tablet + 1) and (max-width: ($viewport-width--desktop)) {
+    width: ($page-width--tablet);
+  }
+
+  @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
+    width: 90%;
+  }
+
+  @media (max-width: $viewport-width--phone) {
+    &::before {
+      content: 'Phone';
+    }
+
+    width: auto;
+  }
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+.figure-container {
+  display: flex;
+}
