@@ -1,10 +1,10 @@
 @import 'variables';
 
 nav {
-  background-color: $color--bg--main;
   height: $height-nav-item;
   margin: auto;
   text-transform: capitalize;
+  background-color: lighten($color--bg--main, 40%);
 
   > ul {
     display: flex;
