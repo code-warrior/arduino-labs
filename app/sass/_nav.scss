@@ -19,18 +19,19 @@ nav {
     }
   }
 
-  a {
-    display: block;
-    color: $color--nav-links;
-    line-height: $height-nav-item;
-    text: {
-      decoration: none;
-      align: center;
-    }
+    a {
+      display: block;
+      color: $color--nav-links;
+      line-height: $height-nav-item;
+      text: {
+        decoration: none;
+        align: center;
+      }
 
-    &:hover {
-      background-color: lighten($color--bg--main, 40%);
-      color: $color--header-text;
+      &:hover {
+        background-color: rgb(23, 161, 165);
+        color: $color--header-text;
+      }
     }
   }
 }
