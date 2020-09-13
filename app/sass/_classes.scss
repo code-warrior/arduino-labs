@@ -1,7 +1,7 @@
 @import 'variables';
 
 .container {
-  margin: auto;
+  margin: 0 auto;
 
   @media (min-width: $viewport-width--desktop + 1) {
     width: ($page-width--desktop);
