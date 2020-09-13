@@ -67,3 +67,24 @@ sup {
   ////
   top: -.5em;
 }
+
+main {
+  a {
+    &:link {
+      border: {
+        top: 1px solid transparent;
+        right: 1px solid transparent;
+        bottom: 1px solid $color--links;
+        left: 1px solid transparent;
+      }
+
+      transition: 375ms;
+    }
+
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid $color--links;
+    }
+  }
+}
