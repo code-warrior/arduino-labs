@@ -5,6 +5,7 @@
 @import 'variables';
 @import 'headings';
 @import 'header';
+@import 'footer';
 @import 'nav';
 
 :root {
@@ -22,45 +23,7 @@ body {
   line-height: $leading;
 }
 
-footer {
-  text-align: center;
 
-  ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-
-    @media (max-width: $viewport-width--desktop) {
-      display: block;
-    }
-
-    li {
-      font-size: (.9 * $base-typeface-size);
-
-      @media (max-width: $viewport-width--desktop) {
-        font-size: (.75 * $base-typeface-size);
-        line-height: 1.5;
-      }
-    }
-
-    li:first-of-type::after,
-    li:nth-child(2)::after {
-      content: '　';
-
-      @media (max-width: $viewport-width--desktop) {
-        content: none;
-      }
-    }
-
-    li:nth-child(2)::before,
-    li:last-of-type:before {
-      content: '|　';
-
-      @media (max-width: $viewport-width--desktop) {
-        content: none;
-      }
-    }
-  }
 }
 
 abbr {
