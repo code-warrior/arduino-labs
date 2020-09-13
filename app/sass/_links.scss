@@ -1,7 +1,7 @@
 @import 'variables';
 
 a {
-  color: var(--secondary-color);
+  color: $color--links;
 
   &:link {
     text-decoration: none;
