@@ -30,4 +30,8 @@
 
 .figure-container {
   display: flex;
+
+  @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
+    display: block;
+  }
 }
