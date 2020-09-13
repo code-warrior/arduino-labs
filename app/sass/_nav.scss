@@ -29,7 +29,7 @@ nav {
       }
 
       &:hover {
-        background-color: rgb(23, 161, 165);
+        background-color: $color--bg--header;
         color: $color--header-text;
       }
     }
