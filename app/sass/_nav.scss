@@ -1,23 +1,25 @@
 @import 'variables';
 
 nav {
-  height: $height-nav-item;
-  margin: auto;
-  text-transform: capitalize;
   background-color: lighten($color--bg--main, 40%);
 
-  > ul {
-    display: flex;
-    list-style-type: none;
+  .container {
+    height: $height-nav-item;
+    margin: auto;
+    text-transform: capitalize;
 
-    > li {
-      flex-basis: $width-nav-item;
+    > ul {
+      display: flex;
+      list-style-type: none;
 
-      @media (max-width: (6 * $grid--unit)) {
-        font-size: (.875 * $base-typeface-size);
+      > li {
+        flex-basis: $width-nav-item;
+
+        @media (max-width: (6 * $grid--unit)) {
+          font-size: (.875 * $base-typeface-size);
+        }
       }
     }
-  }
 
     a {
       display: block;
