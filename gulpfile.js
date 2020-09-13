@@ -68,7 +68,7 @@ let compileHTMLForProd = () => {
 
 let serve = () => {
     browserSync({
-        reloadDelay: 50,
+        reloadDelay: 100,
         notify: true,
         server: {
             baseDir: [`./.temp/`, `./app/`, `./app/views/`]
