@@ -1,0 +1,22 @@
+figure {
+  margin: 0 0 0 12px;
+
+  img[src="img/arduino-uno.png"] {
+    width: 300px;
+  }
+
+  img[src="img/arduino-ide.png"],
+  img[src="img/arduino-ide.png"] + figcaption{
+    width: 450px;
+  }
+
+  figcaption {
+    text-align: center;
+    font-weight: bold;
+    font-size: .85rem;
+
+    span {
+      font-style: italic;
+    }
+  }
+}
