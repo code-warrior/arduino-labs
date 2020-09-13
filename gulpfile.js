@@ -66,6 +66,13 @@ let compileHTMLForProd = () => {
         .pipe(dest(`./production-website`));
 };
 
+let copyImagesToProdFolder = () => {
+    return src([
+        `./app/views/img/*.*`],
+        {dot: true})
+        .pipe(dest(`./production-website/img/`));
+};
+
 let serve = () => {
     browserSync({
         reloadDelay: 100,
@@ -109,6 +116,7 @@ exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
 exports.compileHTMLForDev = compileHTMLForDev;
 exports.compileHTMLForProd = compileHTMLForProd;
-exports.build = series(compileHTMLForProd, compileCSSForProd);
+exports.copyUnprocessedAssetsToProdFolder = copyImagesToProdFolder;
+exports.build = series(compileHTMLForProd, compileCSSForProd, copyImagesToProdFolder);
 exports.default = series(compileHTMLForDev, compileCSSForDev, serve);
 exports.clean = clean;
