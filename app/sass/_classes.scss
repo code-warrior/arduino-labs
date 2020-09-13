@@ -3,6 +3,10 @@
 .container {
   margin: 0 auto;
 
+  > p:first-of-type {
+    margin-top: $grid--leading;
+  }
+
   @media (min-width: $viewport-width--desktop + 1) {
     width: ($page-width--desktop);
   }
