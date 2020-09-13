@@ -20,10 +20,6 @@
   }
 
   @media (max-width: $viewport-width--phone) {
-    &::before {
-      content: 'Phone';
-    }
-
     width: auto;
   }
 }
