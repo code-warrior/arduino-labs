@@ -4,11 +4,19 @@ figure {
 
   img[src="img/arduino-uno.png"] {
     width: 300px;
+
+    @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
+      width: 50%;
+    }
   }
 
   img[src="img/arduino-ide.png"],
   img[src="img/arduino-ide.png"] + figcaption{
     width: 450px;
+
+    @media (min-width: ($viewport-width--phone + 1)) and (max-width: $viewport-width--tablet) {
+      width: 90%;
+    }
   }
 
   figcaption {
