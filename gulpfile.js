@@ -83,9 +83,11 @@ let serve = () => {
     });
 
     watch([
+        `./app/views/**/*.html`,
         `./app/views/*.html`,
         `./app/controllers/**/*.njk`,
         `./app/controllers/*.njk`,
+        `./app/sass/**/*.scss`,
         `./app/sass/*.scss`,
         `./app/models/*.json`
     ], series(`compileHTMLForDev`, `compileCSSForDev`))
