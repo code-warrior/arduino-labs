@@ -40,3 +40,12 @@ nav {
     }
   }
 }
+nav .container {
+  .current {
+    background-color: $color--bg--header;
+
+    > a {
+      color: $color--header-text;
+    }
+  }
+}
