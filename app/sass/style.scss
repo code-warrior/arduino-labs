@@ -109,3 +109,15 @@ main {
   font-variant: small-caps;
   font-weight: 500;
 }
+.code-sample {
+  margin: 24px 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  font-family: 'Fira Code', monospace;
+  white-space: pre;
+  font-weight: 300;
+
+  @media (max-width: ($viewport-width--desktop)) {
+    white-space: pre-wrap;
+  }
+}
