@@ -7,7 +7,7 @@
   // For SEO purposes, description should not exceed 160 chars.
   // --------------------------------------------------------------------------------
 #}
-{% macro head(title, description) -%}
+{% macro head(title, description, page) -%}
 <head>
   <meta charset="utf-8">
   <title>{{ title }}</title>
@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" integrity="sha256-zmfNZmXoNWBMemUOo1XUGFfc0ihGGLYdgtJS3KCr/l0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,600;1,300;1,600&amp;family=Poppins:wght@500&amp;display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{%- if page == "home" -%} css{% else %}../css{% endif %}/style.css">
 </head>
 {%- endmacro %}
 
