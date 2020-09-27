@@ -1,6 +1,9 @@
 @import 'variables';
 
 nav {
+  position: sticky;
+  top: 0;
+
   background-color: lighten($color--bg--main, 40%);
 
   .container {
