@@ -109,6 +109,15 @@ main {
   font-variant: small-caps;
   font-weight: 500;
 }
+ol {
+  list-style-type: upper-roman;
+  margin-bottom: 24px;
+
+  li {
+    margin: 8px 0;
+  }
+}
+
 .code-sample {
   margin: 24px 0;
   padding: 12px;
