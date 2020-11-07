@@ -60,6 +60,11 @@ let compileHTMLForProd = () => {
             return require(`./app/models/sections.json`);
         }))
         .pipe(HTMLPreprocessor())
+        .pipe(dest(`./production-website`));
+};
+
+let compressHTML = () => {
+    return src(`./production-website`)
         .pipe(HTMLCompressor({
             removeComments: true,
             collapseWhitespace: true
@@ -119,6 +124,7 @@ exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
 exports.compileHTMLForDev = compileHTMLForDev;
 exports.compileHTMLForProd = compileHTMLForProd;
+exports.compressHTML = compressHTML;
 exports.copyUnprocessedAssetsToProdFolder = copyImagesToProdFolder;
 exports.build = series(compileHTMLForProd, compileCSSForProd, copyImagesToProdFolder);
 exports.default = series(compileHTMLForDev, compileCSSForDev, serve);
