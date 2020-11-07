@@ -21,6 +21,24 @@
 {%- endmacro %}
 
 {#
+// --------------------------------------------------------------------------------
+// HEADER
+// --------------------------------------------------------------------------------
+#}
+{% macro header(headingContent, paragraphContent) -%}
+  <header>
+    <div class="container">
+      <span class="fa fa-flask"></span>
+      <section>
+        <h1>{{ headingContent }}</h1>
+        <p>{{ paragraphContent }}</p>
+      </section>
+      <span class="fa fa-flask"></span>
+    </div>
+  </header>
+{%- endmacro %}
+
+{#
   // --------------------------------------------------------------------------------
   // NAV
   //

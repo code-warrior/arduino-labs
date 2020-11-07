@@ -5,16 +5,7 @@
   }}
 <body>
 {% include 'app/controllers/blocks/ie_version_warning.njk' %}
-<header>
-  <div class="container">
-    <span class="fa fa-flask"></span>
-    <section>
-      <h1>Lab 1 — Setting Up Arduino</h1>
-      <p><a href=".././">Intro to Computers Labs</a></p>
-    </section>
-    <span class="fa fa-flask"></span>
-  </div>
-</header>
+{{ layouts.header('Lab 1 — Setting Up Arduino', '<a href=".././">Intro to Computers Labs</a>' | safe) }}
 {{ layouts.nav('01/', links) }}
   <main>
     <div class="container">
