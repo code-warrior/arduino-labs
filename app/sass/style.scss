@@ -17,6 +17,10 @@
   font-size: $base-typeface-size;
 }
 
+pre {
+  background-color: white;
+}
+
 body {
   color: var(--primary-color);
   font-family: $font-stack--reading-text;
