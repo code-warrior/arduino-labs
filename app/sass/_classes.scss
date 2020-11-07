@@ -3,7 +3,7 @@
 .container {
   margin: 0 auto;
 
-  > p:first-of-type {
+  > p:nth-child(1) {
     margin-top: $grid--leading;
   }
 
