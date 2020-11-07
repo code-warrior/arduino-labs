@@ -81,7 +81,7 @@ let copyImagesToProdFolder = () => {
 
 let serve = () => {
     browserSync({
-        reloadDelay: 250,
+        reloadDelay: 500,
         notify: true,
         server: {
             baseDir: [`./.temp/`, `./app/`, `./app/views/`]
