@@ -1,0 +1,219 @@
+{%- import 'app/controllers/macros/layouts.njk' as layouts -%}
+<!DOCTYPE html>
+<html lang="en">
+  {{ layouts.head('Arduino Lab 02 | Computing Sciences Dept | University of Hartford', 'The 2nd in a series of labs using the Arduino platform.', 'lab-02')
+  }}
+<body>
+{% include 'app/controllers/blocks/ie_version_warning.njk' %}
+{{ layouts.header(
+  'Lab 2 — Working with <abbr title="Light-Emitting Diodes">LED</abbr>s' | safe,
+  '<a href=".././">Intro to Computers Labs</a>' | safe
+) }}
+{{ layouts.nav('02/', links) }}
+  <main>
+    <div class="container">
+      <h2>Introduction</h2>
+      <p>In this lab, you’ll learn about basic electronics along with some simple computer programming. Specifically, you’ll configure an Arduino with lights that blink in succession. Let’s get started.</p>
+
+      <h2>What You Need</h2>
+      <ul>
+        <li>The Arduino <span class="small-caps"><abbr title="Integrated Development Environment">ide</abbr></span></li>
+        <li>An Arduino <span class="small-caps">uno</span> revision 3 board</li>
+        <li>1 &times; breadboard</li>
+        <li>1 &times; red <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span></li>
+        <li>1 &times; green <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span></li>
+        <li>1 &times; blue <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span></li>
+        <li>3 &times; 140&ohm; resistor</li>
+      </ul>
+
+<!-- Explaining the Components -->
+      <h2>Explaining the Components</h2>
+      <p>Before proceeding, you’ll need to understand each device needed for this lab. Also, this lab builds on the first lab. Make sure to do that one before doing this one.</p>
+      <ul>
+        <li>What is a <a href="https://learn.sparkfun.com/tutorials/how-to-use-a-breadboard/all" target="_blank" rel="noopener">breadboard</a>?</li>
+        <li>What is an <a href="https://en.wikipedia.org/wiki/Light-emitting_diode" target="_blank" rel="noopener"><span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span></a></li>
+        <li>What is a <a href="https://learn.sparkfun.com/tutorials/resistors/all" target="_blank" rel="noopener">resistor</a>?</li>
+      </ul>
+
+<!-- Understanding Voltage and Arduino’s Pins -->
+      <h2>Understanding Voltage and Arduino’s Pins</h2>
+      <p>Every hole on the Arduino is known as a <b>pin</b>. A pin can be configured as an <b>input</b> or <b>output</b>. As an input, the pin reads a high voltage received on that pin; as an output, the pin sends a <b>high voltage</b> on that pin. In the Arduino world, a high voltage is usually 5 volts (it can also be 3.3 volts, but not for the purposes of this lab).</p>
+      <p>Let’s consider an example. If I configure pin 10 as an output and pin 11 as an input, it means Arduino will send a constant 5 volts out pin 10, while listening for 5 volts of input on pin 11. These two modes of electronic interaction are very important to all computers, including the Arduino microcomputer. It’s the electronic equivalent of saying, “Turn this on,” and, “turn this off.”</p>
+
+      <p>Sending or receiving 5 volts only makes sense if there is a ground connection to complete the <b>circuit</b>. The term circuit and circle share the same root: “circ,” meaning ring or round in Latin. Therefore, our 5 volts and ground complete a circuit that starts with 5 volts and completes at ground. Since a circle has no end, the electricity traveling around the circuit is, in theory, infinite. In reality, however, batteries die; generators fail, etc.</p>
+
+<!--      <p>Among the many female pin insertion points along the left side of the Arduino, you’ll see “5V”, “GND”. When connected to your computer via a usb cable, or to power via the barrel jack (the black component in the top left of the Arduino in the image, the Arduino provides the two components needed for power: 5 volts (`+`) and ground (`-`). Those two pins can be used with hook-up or jumper wires to extend power to a breadboard, much like connecting an extension cord to an outlet in your home extends power beyond the wall connection. For this lab, we’ll use the GND connection, but not the 5V connection. I’ll explain why.</p>-->
+
+      <figure title="The Arduino microcontroller with the USB and power connector pointing upward.">
+        <img style="width: 30%; margin: 20px 0;" src="../img/arduino.png" alt="">
+      </figure>
+
+      <p>Hold the Arduino with the <span class="small-caps"><abbr title="Universal Serial Bus">usb</abbr></span> connector pointing up. Most of the pins on the right side have a number from 0 – 13. (Ignore the tildes (~) next to pins 3, 5, 6, 9, 10, and 11.) We also have <code>GND</code>. For this lab, we’ll use pins <code>10</code>, <code>11</code>, <code>12</code>, and <code>GND</code>.</p>
+
+<!-- Wire Colors -->
+      <h2>Wire Colors</h2>
+      <p>You may choose any color wire when hooking up electronics. However, use wire colors that help you to understand your connections. This is especially true when connecting power and ground. Whenever possible, choose <span style="color: red; font-weight: bold;">red for power</span> and <strong>black for ground.</strong> In this lab, red, green, and blue wires are all connected to red, green, and blue <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s.</p>
+
+<!-- Preparing the Connections -->
+      <h2>Preparing the Connections</h2>
+      <p>As you connect the wires and parts to the Arduino and the breadboard, pay special attention to the orientation of the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s and the pins. Try to match your connections to the figure below as closely as possible.</p>
+      <figure title="Cycling through 3 LEDs, one second at a time.">
+        <img src="../img/three-rgbs.png" alt="" style="width: 80%">
+      </figure>
+
+      <p>The <a href="https://www.digikey.com/en/products/detail/kingbright-company-llc/WP7113GT/3084218" target="blank" rel="noopener"><span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span></a>s used in this lab are very common. They’re rated at 2.2 volts (also referred to as forward voltage) and 20 milliamps. Because the Arduino provides 5 volts of power, we need to regulate the power entering the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> by introducing a resistor into our circuit. Ohm’s law will provide the value needed for this resistor.</p>
+
+      <p><strong>Note</strong>: Use Safari, Firefox, or Firefox Developer Edition to view the following mathematical formulae.</p>
+
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>R</mi>
+            <mo> = </mo>
+            <mfrac>
+              <mn>V</mn>
+              <mi>I</mi>
+            </mfrac>
+          </mrow>
+        </math>
+      </div>
+
+      <p>Where…</p>
+
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>R</mi>
+            <mo> = resistance</mo>
+          </mrow>
+        </math>
+      </div>
+
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>V</mi>
+            <mo> = voltage</mo>
+          </mrow>
+        </math>
+      </div>
+
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>I</mi>
+            <mo> = current</mo>
+          </mrow>
+        </math>
+      </div>
+
+      <p>For voltage, we subtract the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>’s forward voltage (<code>2.2</code>) from the voltage provided by the Arduino (<code>5</code>). In math speak, that’s…</p>
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn>2.8v</mn>
+            <mo>=</mo>
+            <mrow>
+              <mi>5</mi>
+              <mo>-</mo>
+              <mi>2.2</mi>
+            </mrow>
+          </mrow>
+        </math>
+      </div>
+
+      <p>We know the current from the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>’s spec: 20mA, or milliamps. To use this in our formula, we need to convert mA to A:</p>
+      <div class="math-formula-container">
+
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>I</mi>
+            <mo> = </mo>
+            <mi>.02</mi>
+          </mrow>
+        </math>
+      </div>
+
+      <p>And, finally, we plug our values into Ohm’s formula:</p>
+      <div class="math-formula-container">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>140 &#x03a9;</mi>
+            <mo> = </mo>
+            <mfrac>
+              <mn>2.8</mn>
+              <mi>.02</mi>
+            </mfrac>
+          </mrow>
+        </math>
+      </div>
+
+      <p>Thus, we use 140&#x03a9; resistors — one per <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> — in our circuit.</p>
+      <p>We’re now done with the hardware part of the lab, and are ready to move on to the software section. Before proceeding, however, double-check your connections.</p>
+
+<!-- The Arduino Sketch -->
+      <h2>The Arduino Sketch</h2>
+      <ol>
+        <li>Connect your Arduino board to your computer, as described in lab 1.</li>
+        <li>Copy all the code in the bounded region below into a new Arduino sketch.</li>
+        <li>Upload the sketch to your Arduino board.</li>
+        <li>You should see each <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> light up in succession for a second each time.</li>
+      </ol>
+
+<!-- Code -->
+      <pre class="code-sample">
+#define RED_LED    12 // Connect the red LED on digital pin 12
+#define GREEN_LED  11 // Connect the green LED on digital pin 11
+#define BLUE_LED   10 // Connect the blue LED on digital pin 10
+#define ONE_SECOND 1000
+
+void setup() {
+  /**
+   * Set the pins on which the red, green, and blue LEDs are connected to output
+   * voltages, meaning that we will be able to send high and low voltages to each
+   * pin, effectively turning on/off the LEDs.
+   */
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(BLUE_LED, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(RED_LED, HIGH);   // Turn on the pin to which the red LED is connected...
+  delay(ONE_SECOND);             // leave it on for a second...
+  digitalWrite(RED_LED, LOW);    // then turn it off.
+
+  digitalWrite(GREEN_LED, HIGH); // Repeat the above procedure for the green LED...
+  delay(ONE_SECOND);
+  digitalWrite(GREEN_LED, LOW);
+
+  digitalWrite(BLUE_LED, HIGH);  // and also for the blue LED.
+  delay(ONE_SECOND);
+  digitalWrite(BLUE_LED, LOW);
+}
+</pre>
+      <h2>Explanation of The Code</h2>
+      <p>The <code>#define</code>s declare one value to be replaced by another and are defined by the author of the sketch. For example, <code>#define RED_LED 12</code> means that <code>12</code> will replace <code>RED_LED</code> in every occurrence of <code>RED_LED</code> in our program. Same goes for <code>GREEN_LED</code>, <code>BLUE_LED</code>, and <code>ONE_SECOND</code>.</p>
+      <p>A pair of forward slashes (<code>//</code>) marks the beginning of a single-line comment. Any content from the first forward slash to the end of the line is ignored by Arduino. It allows people to make comments about the code in which the line appears.</p>
+      <p>Arduino also allows multi-line comments. They’re defined by <code>/*</code> (start comment) and <code>*/</code> (end comment).</p>
+      <p><code>setup</code> is an Arduino-specific <b>function</b>. Derived from mathematics, a function receives input via the parentheses and returns data at the point in which it was invoked. The parens in <code>setup()</code> are empty, so it accepts no input, and the keyword <code>void</code> indicates that it returns nothing. In other words, <code>setup</code> expects no input and returns no output.</p>
+      <p>The <code>setup</code> function — like all functions — is bound by the left (<code>{</code>) and right (<code>}</code>) curly braces.</p>
+      <p><code>setup</code>, however, is necessary, since it’s used to do what its name implies — set things up. Because it only runs, or is executed, once, we put code in <code>setup</code> that needs to run only once.</p>
+      <p>In this sketch, for example, we need to establish the pins on which the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s are connected as outputs. Thus, we invoke Arduino’s <code>pinMode</code> function, which accepts two inputs: a pin number and a mode. In our case, we set up all three <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s as outputs.</p>
+      <p>One last note about <code>setup</code>: It must precede <code>loop</code>, which I talk about next.</p>
+      <p>Like the <code>setup</code> function, <code>loop</code> accepts no input and returns no output. <em>One important distinction between <code>setup</code> and <code>loop</code></em>: <code>loop</code> runs forever, or until power is removed from Arduino. In other words, when the last statement in this sketch is run, <code>digitalWrite(BLUE_LED, LOW);</code>, the code in <code>loop</code> starts again, with line <code>digitalWrite(RED_LED, HIGH);</code>.</p>
+
+      <p>Let’s look at the first three functions in <code>loop</code>. The function <code>digitalWrite</code> accepts a pin number and an output value. For example, <code>digitalWrite(RED_LED, HIGH)</code> sends a high voltage to the pin on which the red <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> is connected.</p>
+
+      <p>The <code>delay</code> function takes as input a number in milliseconds. If you recall, <code>ONE_SECOND</code> was defined as <code>1000</code>. In other words, the <code>delay</code> function is delaying the Arduino by one second.</p>
+
+      <p>And, finally, the next <code>digitalWrite</code> function is exactly like the first one, except that we’re now turning the red <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> off by sending it a <code>LOW</code> value.</p>
+
+      <p>We do same thing for the green and blue <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s. And, because we’re in a loop, all the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s repeat this pattern infinitely.</p>
+
+      <h2>Summary</h2>
+      <p>We learned about some basics of electrical power, the rudiments of computer programing concepts, and how to connect electrical components to prototype an electrical circuit.</p>
+    </div>
+  </main>
+</body>
+</html>
