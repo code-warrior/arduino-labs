@@ -15,6 +15,53 @@
       <h2>Introduction</h2>
       <p>An <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diodes">led</abbr></span>, sometimes called a tri-color <span class="small-caps"><abbr title="Light-Emitting Diodes">led</abbr></span>, is an <span class="small-caps"><abbr title="Light-Emitting Diodes">led</abbr></span> capable of emitting red, green, blue, and combinations in between of the three. This means that many — in fact, millions — of colors can be emitted by an <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diodes">led</abbr></span>. We’ll look at how in this lab.</p>
 
+<!-- Code -->
+      <pre class="code-sample">
+// Define the pins on which the 3 legs of the RGB LED will be connected.
+#define RED_LED   11
+#define GREEN_LED 10
+#define BLUE_LED  9
+
+// Define how long to pause our sketch before running another iteration of the loop.
+#define FOR_HALF_SECOND 500
+
+// Declare the 3 variables that will be used to hold the random red, green, and blue values.
+byte redValue;
+byte greenValue;
+byte blueValue;
+
+void setup() {
+  // Configure each of the pins on which the 3 LEDs are connected as outputs.
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(BLUE_LED, OUTPUT);
+}
+
+void loop() {
+  // Generate a random value between 0 (inclusive) and 256 (exclusive), then
+  // assign that value to redValue.
+  redValue = random(0, 256);
+
+  // As in the previous assignment, generate a random value between 0 and 256,
+  // then assign that value to greenValue.
+  greenValue = random(0, 256);
+
+  // And, finally, do the same for the blue value.
+  blueValue = random(0, 256);
+
+  // Turn on the red LED with the randomly-generated value.
+  analogWrite(RED_LED, redValue);
+
+  // Do the same for the green LED.
+  analogWrite(GREEN_LED, greenValue);
+
+  // And for the blue LED.
+  analogWrite(BLUE_LED, blueValue);
+
+  // Wait a half a second before running all the code in loop() again.
+  delay(FOR_HALF_SECOND);
+}
+</pre>
     </div>
   </main>
 </body>
