@@ -5,5 +5,10 @@
   }}
 <body>
 {% include 'app/controllers/blocks/ie_version_warning.njk' %}
+{{ layouts.header(
+  'Lab 3 — Working with an <abbr title="Red, Green, Blue">RGB</abbr> <abbr title="Light-Emitting Diodes">LED</abbr>' | safe,
+  '<a href=".././">Intro to Computers Labs</a>' | safe
+) }}
+{{ layouts.nav('03/', links) }}
 </body>
 </html>
