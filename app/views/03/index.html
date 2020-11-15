@@ -25,6 +25,23 @@
         <li>4 &times; jumper wire, preferably in the colors <span class="red">red</span>, <span class="green">green</span>, <span class="blue">blue</span>, and black</li>
       </ul>
 
+<!-- Explaining the Components -->
+      <h2>Explaining the Components</h2>
+      <p>The <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> is the only new component introduced in this lab, and it’s capable of rendering millions of colors.</p>
+
+      <p>If you recall from the previous lab, a single-color <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> has two legs: an anode (positive, or <code>+</code>) and a cathode (negative, or <code>-</code>). When power is supplied to the anode, the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> lights up. In an <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>, each of the three colors (red, green, and blue) gets its own leg, and they all share a common leg — the cathode. Thus, an <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> has four legs: one for red, one for green, one for blue, and one for cathode.</p>
+
+      <p>Hold the <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> with the legs facing you, making sure the the second leg from the left is the longest. If we count left to right, the left most leg is 1 and the right most leg is 4. Refer to <a
+        href="https://commons.wikimedia.org/wiki/File:RGB_LED.jpg" target="_blank" rel="noopener">this image</a>. Each leg is coded as follows:</p>
+      <ul style="list-style-type: none">
+        <li><span class="red">1. Red</span></li>
+        <li>2. Common cathode (<code>-</code>)</li>
+        <li><span class="green">3. Green</span></li>
+        <li><span class="blue">4. Blue</span></li>
+      </ul>
+
+      <p>Each anode can take a voltage between 0 and it’s highest forward voltage, in this case 2.2. By sending different voltages to each anode, an <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> can combine the intensity of red, green, and blue in order to render millions of colors, like a pixel on a tablet/phone/computer display.</p>
+
 <!-- Code -->
       <pre class="code-sample">
 // Define the pins on which the 3 legs of the RGB LED will be connected.
