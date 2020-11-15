@@ -80,7 +80,8 @@ let copyImagesToProdFolder = () => {
 };
 
 let serve = () => {
-    browserSync({
+    browserSync.init({
+        injectChanges: false, // True by default and was blocking the ability to compile HTML.
         reloadDelay: 500,
         notify: true,
         server: {
