@@ -52,6 +52,18 @@
         <li><span class="blue">Blue for leg 4</span></li>
       </ul>
 
+<!-- Preparing the Connections -->
+      <h2>Preparing the Connections</h2>
+
+      <p>Try to match your connections to the figure below as closely as possible, <strong>paying special attention to the orientation of the <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>: The longest leg, the common cathode (<code>-</code>), should be second from left.</strong></p>
+      <figure title="Connecting an RGB LED to a Breadboard.">
+        <img src="../img/rgb-led.png" alt="" style="width: 80%">
+      </figure>
+
+      <p>The <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> used in this lab is very common. It’s rated at 2.2 volts and 20 milliamps, much like the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>s used in lab 2. And, as in lab 2, we need to regulate the power entering into the <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>. However, the <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span> in this lab has three anodes instead of one, so we’ll need to introduce our resistors in triplicate, one for each leg of the <span class="small-caps"><abbr title="Red, Green, Blue">rgb</abbr></span> <span class="small-caps"><abbr title="Light-Emitting Diode">led</abbr></span>. Lucky for us, we calculated the value for each resistor in lab 2 — 140&#x03a9;.</p>
+
+      <p>We’re now done with the hardware part of the lab. Let’s move on to the software section. Before proceeding, double-check your connections.</p>
+
 <!-- Code -->
       <pre class="code-sample">
 // Define the pins on which the 3 legs of the RGB LED will be connected.
