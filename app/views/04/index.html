@@ -26,6 +26,36 @@
         <li>7 &times; jumper wire</li>
       </ul>
 
+<!-- Code -->
+      <pre class="code-sample">
+#define PHOTO_RESISTOR     A0   // The pin on which the photo resistor is connected
+#define SPEAKER            2    // The pin on which the speaker is connected
+#define BAUD_RATE          9600 // The rate at which the serial connection will be made
+#define LIGHTING_THRESHOLD 900  // The lighting threshold to pass in order to turn on/off the speaker
+
+int photoResistorReading;
+
+void setup() {
+  Serial.begin(BAUD_RATE);
+
+  // Configure the pin on which the speaker is connected as an OUTPUT.
+  pinMode(SPEAKER, OUTPUT);
+
+  // Configure the pin on which the photo resistor is connected as an INPUT.
+  pinMode(PHOTO_RESISTOR, INPUT);
+}
+
+void loop() {
+  // Record the photo resistor’s value.
+  photoResistorReading = analogRead(PHOTO_RESISTOR);
+
+  if (photoResistorReading > LIGHTING_THRESHOLD) {
+    digitalWrite(SPEAKER, HIGH); // Turn the speaker on
+  } else {
+    digitalWrite(SPEAKER, LOW);  // Turn the speaker off
+  }
+}
+</pre>
     </div>
   </main>
 </body>
